@@ -22,10 +22,10 @@ jobs:
       - name: build-mvn
         run: |
           export commitsha=$(/bin/bash scripts/commit.sh )
-          echo $commitsha
           mvn clean install
       - name: build-docker
         run: |
+          export commitsha=$(/bin/bash scripts/commit.sh )
           docker login -u ${{ secrets.CI_REGISTRY_USER }} -p ${{ secrets.CI_REGISTRY_PASSWORD }}
           docker build -t ${{ secrets.CI_REGISTRY_USER }}/${{ secrets.CI_PROJECT_NAME }}:$commitsha .
           docker push ${{ secrets.CI_REGISTRY_USER }}/${{ secrets.CI_PROJECT_NAME }}:$commitsha
