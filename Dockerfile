@@ -13,6 +13,6 @@ WORKDIR /opt
 
 COPY --chown=nobody:nobody   ./target/lab*.jar   /opt/lab.jar
 
-EXPOSE 80
+EXPOSE 8090
 
 CMD java $JAVAOPS -jar -Dspring.profiles.active=$DBTYPE /opt/lab.jar
