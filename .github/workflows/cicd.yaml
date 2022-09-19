@@ -30,9 +30,8 @@ jobs:
           heroku_app_name: zdperson
           heroku_email: zaidhamasha@gmail.com
           usedocker: true
-      # - name: build-docker
-      #   run: |
-      #     export commitsha=$(/bin/bash scripts/commit.sh )
-      #     docker login -u ${{ secrets.CI_REGISTRY_USER }} -p ${{ secrets.CI_REGISTRY_PASSWORD }}
-      #     docker build -t ${{ secrets.CI_REGISTRY_USER }}/${{ secrets.CI_PROJECT_NAME }}:$commitsha .
-      #     docker push ${{ secrets.CI_REGISTRY_USER }}/${{ secrets.CI_PROJECT_NAME }}:$commitsha
+        env:
+          DBTYPE: postgres
+          SPRING_DATASOURCE_USERNAME: ${{secrets.PSCI_DB_USERNAME}}
+          SPRING_DATASOURCE_url: ${{secrets.PSCI_DB_URL}}
+          SPRING_DATASOURCE_PASSWORD:  ${{secrets.PSCI_DB_PASSWORD}}
