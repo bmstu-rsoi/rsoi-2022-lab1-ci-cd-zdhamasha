@@ -24,5 +24,6 @@ jobs:
         run: |
           apk add git
           export commitsha=$( /bin/sh scripts/commit.sh )
-          mvn clean install
-          ls ./target
+          echo $commitsha
+          # mvn clean install
+          # ls ./target
