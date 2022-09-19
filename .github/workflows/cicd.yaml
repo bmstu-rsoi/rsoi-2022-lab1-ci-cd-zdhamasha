@@ -22,4 +22,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: build 
         run: |
-           mvn clean install
+          export date=$(git log -1 --format="%at" | xargs -I{} date -d @{} +%Y%m%d)
+          export sha=$CI_COMMIT_SHORT_SHA
+          export version=${date}-${sha}
+          mvn versions:set -DnewVersion=$version
+          mvn clean package
