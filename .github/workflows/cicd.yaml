@@ -27,3 +27,4 @@ jobs:
           export version=${date}-${sha}
           mvn versions:set -DnewVersion=$version
           mvn clean package
+          ls ./target
