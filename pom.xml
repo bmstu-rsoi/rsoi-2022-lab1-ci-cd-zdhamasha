@@ -6,7 +6,7 @@
 
     <groupId>com.bmstu.lab</groupId>
     <artifactId>lab1</artifactId>
-    <version>${commitsha}/version>
+    <version>${commitsha}</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
