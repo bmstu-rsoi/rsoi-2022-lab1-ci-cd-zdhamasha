@@ -16,15 +16,9 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    container: migueldoctor/cosmos-gitlabci-jdk8-maven-gradle:latest
-    runs-on: self-hosted
+    runs-on: office
     steps:
       - uses: actions/checkout@v2
       - name: build
         run: |
-          apk add git
-          touch .env
-          echo commitsha=$(/bin/sh scripts/commit.sh) >> .env
-          cat .env
-          # mvn clean install
-          # ls ./target
+          mvn clean install
