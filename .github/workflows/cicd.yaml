@@ -20,11 +20,8 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: build 
+      - name: build
         run: |
-          export date=$(git log -1 --format="%at" | xargs -I{} date -d @{} +%Y%m%d)
-          export sha=$CI_COMMIT_SHORT_SHA
-          export version=${date}-${sha}
-          mvn versions:set -DnewVersion=$version
-          mvn clean package
-          ls ./target
+          apk add git
+          export commitsha=$( /bin/sh scripts/commit.sh )
+          mvn clean install
