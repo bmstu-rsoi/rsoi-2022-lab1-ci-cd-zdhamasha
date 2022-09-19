@@ -1,39 +1,18 @@
-version: "3.7"
+version: "3"
 services:
-  mysql-service:
-    image: mysql:8
-    networks:
-      - person-network
-    restart: always
+  postgres:
+    image: library/postgres:13
+    container_name: postgres
+    restart: on-failure
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=person
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: postgres
     volumes:
-      - ./mysql:/var/lib/mysql
-    healthcheck:
-      test: ["CMD-SHELL", 'mysql --database=person --password=root --execute="SELECT count(table_name) > 0 FROM information_schema.tables;" --skip-column-names -B']
-      interval: 20s
-      timeout: 30s
-      # start_period: 8s
-      retries: 4
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/:/docker-entrypoint-initdb.d/
     ports:
-      - "3306:3306"
-  person-service:
-    image: $user/$image:$tag
-    restart: always
-    env_file:
-      - repo.env
-    ports:
-      - "8090:8090"
-    environment:
-      - DBTYPE="mysql"
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_url=jdbc:mysql://mysql-service:3306/person?allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_PASSWORD=root
-    networks:
-      - person-network
-    depends_on:
-      - mysql-service
-networks:
-  person-network:
-    driver: bridge
+      - "5432:5432"
+
+volumes:
+  db-data:

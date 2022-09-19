@@ -4,14 +4,14 @@ spring:
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://127.0.0.1/assignment?allowPublicKeyRetrieval=true
-    username: root
-    password: P@ssw0rd
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
 
 management:
   endpoints:
