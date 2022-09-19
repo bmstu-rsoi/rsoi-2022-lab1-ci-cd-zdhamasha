@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 gitCommit() {
  hash="$(git log --format='%H' HEAD -n1)"
