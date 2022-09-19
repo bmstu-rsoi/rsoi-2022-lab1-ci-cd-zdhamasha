@@ -11,7 +11,7 @@ ENV JAVAOPS=$java_opts
 
 WORKDIR /opt
 
-COPY --chown=nobody:nobody   /target/lab*.jar   /opt/lab.jar
+COPY --chown=nobody:nobody   ./target/lab*.jar   /opt/lab.jar
 
 EXPOSE 8090
 
