@@ -25,3 +25,4 @@ jobs:
           apk add git
           export commitsha=$( /bin/sh scripts/commit.sh )
           mvn clean install
+          ls ./target
