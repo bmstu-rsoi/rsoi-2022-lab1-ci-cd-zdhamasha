@@ -20,10 +20,12 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
+      - name: 'Create env file'
       - name: build
         run: |
           apk add git
-          export commitsha=$( /bin/sh scripts/commit.sh )
-          echo $commitsha
+          touch .env
+          echo commitsha=$(/bin/sh scripts/commit.sh) >> .env
+          cat .env
           # mvn clean install
           # ls ./target
