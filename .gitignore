@@ -1,6 +1,20 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
+/bin/
+/target/
+/.idea/
+/.settings/
+/.flattened-pom.xml
+*.iml
+*.classpath
+*.project
+*.war
+*.jar
+*.class
+**/target/*
+target/*
+
 logs
 *.log
 npm-debug.log*

@@ -1,0 +1,9 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: runner-rsoi-2022-lab1-ci-cd-zdhamasha
+spec:
+  replicas: 1
+  template:
+    spec:
+      repository: bmstu-rsoi/rsoi-2022-lab1-ci-cd-zdhamasha
