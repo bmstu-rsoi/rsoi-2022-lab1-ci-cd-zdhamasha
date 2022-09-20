@@ -19,19 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build-mvn
+      - name: build
         run: |
           export commitsha=$(/bin/bash scripts/commit.sh )
           mvn clean install
-      - name: Deploy
+      - name: deploy
         uses: akhileshns/heroku-deploy@v3.12.12 
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: zdperson
           heroku_email: zaidhamasha@gmail.com
           usedocker: true
-        env:
-          DBTYPE: postgres
-          SPRING_DATASOURCE_USERNAME: ${{secrets.PSCI_DB_USERNAME}}
-          SPRING_DATASOURCE_url: ${{secrets.PSCI_DB_URL}}
-          SPRING_DATASOURCE_PASSWORD:  ${{secrets.PSCI_DB_PASSWORD}}
