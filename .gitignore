@@ -1,6 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
+.vscode
+./.vscode
 /bin/
 /target/
 /.idea/
@@ -14,4 +16,4 @@
 *.class
 **/target/*
 target/*
-.vscode
+.vscode/settings.json
