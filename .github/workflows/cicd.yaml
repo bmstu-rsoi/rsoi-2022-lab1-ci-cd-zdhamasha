@@ -20,3 +20,11 @@ jobs:
           heroku_app_name: zdperson
           heroku_email: zaidhamasha@gmail.com
           usedocker: true
+          
+      - name: Run API Tests
+        uses: matt-ball/newman-action@master
+        with:
+          collection: postman/[inst] Lab1.postman_collection.json
+          environment: postman/[inst][heroku] Lab1.postman_environment.json
+          delayRequest: 100
+          reporters: '[ "cli" ]'
