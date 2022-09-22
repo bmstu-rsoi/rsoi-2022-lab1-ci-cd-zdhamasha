@@ -17,4 +17,12 @@ public class PersonControllerTest {
         ResponseEntity<?> responseEntity = new PersonController(personRepository).create(person, UriComponentsBuilder.newInstance());
         Assertions.assertEquals(HttpStatus.CREATED,responseEntity.getStatusCode());
     }
+    @Test
+    public void deleteById()
+    {
+        PersonRepository personRepository = new PersonRepositoryMock();
+        Person person = new Person(1L,"zaidhamasha",25,"progressoft","Moscow");
+        ResponseEntity<?> responseEntity = new PersonController(personRepository).delete(person.id);
+        Assertions.assertEquals(HttpStatus.NO_CONTENT),responseEntity.getStatusCode();
+    }
 }
