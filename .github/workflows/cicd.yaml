@@ -1,11 +1,11 @@
-name: build
+name: cicd
 on:
   push:
     branches: [ "*", "!master" ]
   workflow_dispatch:
 
 jobs:
-  build:
+  cicd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
