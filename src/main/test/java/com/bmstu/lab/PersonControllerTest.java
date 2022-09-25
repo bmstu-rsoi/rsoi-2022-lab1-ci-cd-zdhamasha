@@ -1,5 +1,6 @@
-package com.bmstu.lab;
+package com.bmstu.lab.controller;
 
+import com.bmstu.lab.PersonRepositoryMock;
 import com.bmstu.lab.controller.Person;
 import com.bmstu.lab.controller.PersonController;
 import com.bmstu.lab.repository.PersonRepository;
@@ -22,7 +23,8 @@ public class PersonControllerTest {
     {
         PersonRepository personRepository = new PersonRepositoryMock();
         Person person = new Person(1L,"zaidhamasha",25,"progressoft","Moscow");
-        ResponseEntity<?> responseEntity = new PersonController(personRepository).delete(person.id);
-        Assertions.assertEquals(HttpStatus.NO_CONTENT),responseEntity.getStatusCode();
+        personRepository.save(PersonMapper.toEntity(person));
+        ResponseEntity<?> responseEntity = new PersonController(personRepository).delete(person.getId());
+        Assertions.assertEquals(HttpStatus.NO_CONTENT,responseEntity.getStatusCode());
     }
 }
