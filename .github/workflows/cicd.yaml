@@ -1,15 +1,15 @@
-name: build
+name: cicd
 on:
   push:
     branches: [ "*", "!master" ]
   workflow_dispatch:
 
 jobs:
-  build:
+  cicd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build
+      - name: CICD
         run: |
           export commitsha=$(/bin/bash scripts/commit.sh )
           mvn clean install
